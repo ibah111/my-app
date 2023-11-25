@@ -1,4 +1,15 @@
-import { Checkbox, FormControlLabel, FormGroup, Grid } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  Input,
+  InputLabel,
+  Stack,
+  TextField,
+} from "@mui/material";
+import { TextMaskCustom } from "../utils/fieldMask";
 class Addon {
   id: number;
   title: string;
@@ -69,7 +80,28 @@ export default function Header() {
         samogonPic
       </Grid>
       <Grid className="order" border={"solid"}>
-        order
+        <Stack direction={"column"}>
+          <TextField
+            name="textmask"
+            id="formatted-text-mask-input"
+            InputProps={{
+              inputComponent: TextMaskCustom as any,
+            }}
+          />
+        </Stack>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox />}
+            label={"Покупка в рассрочку"}
+          />
+        </FormGroup>
+        <Button
+          onClick={() => {
+            alert("aboba");
+          }}
+        >
+          Заказать
+        </Button>
       </Grid>
     </Grid>
   );
