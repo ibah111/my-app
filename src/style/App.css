@@ -1,4 +1,56 @@
 .header {
+  /* Откройте больше возможностей «Крестьянки» */
+  border: black;
+  position: absolute;
+  width: "100%";
+  height: "100%";
+  left: calc(50% - 1345px/2 + 0.5px);
+  top: 100px;
+  font-family: 'Arial';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 59px;
   text-align: center;
-  
+  text-transform: uppercase;
+  color: #323232;
 }
+.under {
+  /* Вместе с полезными дополнениями */
+border: #323232;
+position: absolute;
+width: "100%";
+height: "100%";
+left: calc(50% - 548px/2);
+top: 179px;
+font-family: 'Arial';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+text-align: center;
+color: #323232;
+}
+.group {
+  position: absolute;
+  width: "100%";
+  height: "100%";
+  top: 250px;
+  left: 260px;
+}
+.samogonPic {
+  position: absolute;
+  width: "100%";
+  height: "100%";
+  align-self: center;
+  top: 380px;
+  left: 760px;
+}
+.order { 
+  position: absolute;
+  width: "100%";
+  height: "100%";
+  top: 250px;
+  left: 1328px;
+}
+
