@@ -12,10 +12,12 @@ import { TextMaskCustom } from "../utils/fieldMask";
 import React from "react";
 import ConfirmingDialog from "./ConfirmingDialog";
 import InsertedImage from "./Image";
+import { naborMini, nasadkaMini, steelCan, zazhimMini } from "../images";
 class Addon {
   id: number;
   title: string;
   price: number;
+  pic: any;
 }
 export default function Header() {
   const addons: Addon[] = [
@@ -26,21 +28,25 @@ export default function Header() {
       id: 1,
       title: "Набор для копчения",
       price: 7990,
+      pic: naborMini,
     },
     {
       id: 2,
       title: "Жестяные банки",
       price: 7990,
+      pic: steelCan,
     },
     {
       id: 3,
       title: "Защитные зажимы",
       price: 7990,
+      pic: zazhimMini,
     },
     {
       id: 4,
       title: "Насадка для самогоноварения",
       price: 7990,
+      pic: nasadkaMini,
     },
   ];
   const [name, setName] = React.useState<string>("");
@@ -85,12 +91,15 @@ export default function Header() {
         <Grid className="group" border={"solid"}>
           {addons.map((item) => {
             return (
-              <FormGroup>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={`${item.title}, ${item.price}Р`}
-                />
-              </FormGroup>
+              <>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label={`${item.title}, ${item.price}Р`}
+                  />
+                </FormGroup>
+                <img src={item.pic} alt="pic" className="pic" />
+              </>
             );
           })}
         </Grid>
