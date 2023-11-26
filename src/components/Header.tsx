@@ -4,8 +4,6 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
-  Input,
-  InputLabel,
   Stack,
   TextField,
   Typography,
@@ -13,6 +11,7 @@ import {
 import { TextMaskCustom } from "../utils/fieldMask";
 import React from "react";
 import ConfirmingDialog from "./ConfirmingDialog";
+import InsertedImage from "./Image";
 class Addon {
   id: number;
   title: string;
@@ -99,7 +98,7 @@ export default function Header() {
          * Фотка самогона
          */}
         <Grid className="samogonPic" border={"solid"}>
-          samogonPic
+          <InsertedImage />
         </Grid>
         <Grid className="order" border={"solid"}>
           <Grid
