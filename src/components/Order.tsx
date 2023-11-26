@@ -12,6 +12,7 @@ import { Stack } from "@mui/material";
 import { TextMaskCustom } from "../utils/fieldMask";
 import ConfirmingDialog from "./ConfirmingDialog";
 import React from "react";
+import { useAppSelector } from "../store/hooks/redux";
 
 export default function Order() {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -26,6 +27,8 @@ export default function Order() {
     if (name && phone.length === 17) return false;
     return true;
   };
+
+  const { totalCost } = useAppSelector((state) => state.addonReducer);
 
   return (
     <>
@@ -43,7 +46,7 @@ export default function Order() {
               <MenuItem value={10}>34 литра с ТЭНом</MenuItem>
             </Select>
           </FormControl>
-          <Grid className="test">Итого: {11000}</Grid>
+          <Grid className="test">Итого: {totalCost}</Grid>
         </Grid>
         <Stack direction={"column"}>
           <TextField

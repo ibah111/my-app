@@ -2,8 +2,13 @@ import { Checkbox, FormControlLabel, FormGroup, Grid } from "@mui/material";
 import InsertedImage from "./Image";
 import { naborMini, nasadkaMini, steelCan, zazhimMini } from "../images";
 import Order from "./Order";
-import { useAppSelector } from "../store/hooks/redux";
-import { Addon } from "../store/reducers/addonsSlice";
+import addonsSlice, {
+  Addon,
+  addonSlice,
+  decreaseCost,
+  increaseCost,
+} from "../store/reducers/addonsSlice";
+import { useAppDispatch } from "../store/hooks/redux";
 
 export default function Header() {
   const addons: Addon[] = [
@@ -28,9 +33,8 @@ export default function Header() {
       pic: nasadkaMini,
     },
   ];
-
-  const {} = useAppSelector((state) => state.addonReducer);
-
+  const { increaseCost, decreaseCost } = addonSlice.actions;
+  const dispatch = useAppDispatch();
   return (
     <>
       <Grid
@@ -52,7 +56,15 @@ export default function Header() {
               <>
                 <FormGroup>
                   <FormControlLabel
-                    control={<Checkbox />}
+                    control={
+                      <Checkbox
+                        onChange={(event) => {
+                          if (event.target.checked)
+                            dispatch(increaseCost(item.price));
+                          else dispatch(decreaseCost(item.price));
+                        }}
+                      />
+                    }
                     label={
                       <>
                         <img src={item.pic} alt="pic" className="pic" />

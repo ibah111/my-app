@@ -13,24 +13,19 @@ interface TotalCostAddon {
 
 const initialState: TotalCostAddon = {
   addonsIds: [],
-  totalCost: 11000, // 11000
+  totalCost: 11000,
 };
 export const addonSlice = createSlice({
-  name: "addon",
+  name: "Addons",
   initialState,
   reducers: {
-    addIds(state, action: PayloadAction<number>) {
-      /**
-       * @todo
-       * ???
-       */
-      state.addonsIds.push(action.payload);
-    },
-    addCost(state, action: PayloadAction<number>) {
+    increaseCost(state, action: PayloadAction<number>) {
       state.totalCost += action.payload;
     },
-    resetIds() {},
-    resetCost() {},
+    decreaseCost(state, action: PayloadAction<number>) {
+      state.totalCost -= action.payload;
+    },
   },
 });
+export const { increaseCost, decreaseCost } = addonSlice.actions;
 export default addonSlice.reducer;
