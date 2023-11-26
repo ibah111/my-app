@@ -1,4 +1,4 @@
-import { FormControl, Select, MenuItem, Button } from "@mui/base";
+import { FormControl, Select, MenuItem, Button } from "@mui/material";
 import {
   Grid,
   InputLabel,
@@ -8,7 +8,7 @@ import {
   Checkbox,
   Typography,
 } from "@mui/material";
-import { Stack } from "@mui/system";
+import { Stack } from "@mui/material";
 import { TextMaskCustom } from "../utils/fieldMask";
 import ConfirmingDialog from "./ConfirmingDialog";
 import React from "react";
@@ -37,17 +37,17 @@ export default function Order() {
           }}
         >
           <Grid className="text">Заказ</Grid>
-          <FormControl>
+          <FormControl fullWidth>
             <InputLabel id="select">Товар</InputLabel>
-            <Select id="simple-select">
+            <Select id="simple-select" labelId="Товар" label="Товар">
               <MenuItem value={10}>34 литра с ТЭНом</MenuItem>
             </Select>
           </FormControl>
-          <Grid className="test"></Grid>
+          <Grid className="test">Итого: {11000}</Grid>
         </Grid>
         <Stack direction={"column"}>
           <TextField
-            helperText={!name ? "" : "Введите имя"}
+            helperText={name ? "" : "Введите имя"}
             label="Имя"
             value={name}
             error={!name}
@@ -59,7 +59,7 @@ export default function Order() {
             label="Номер телефона"
             name="textmask"
             id="formatted-text-mask-input"
-            helperText="Введите номер телефона"
+            helperText={phone ? "" : "Введите номер телефона"}
             InputProps={{
               inputComponent: TextMaskCustom as any,
             }}

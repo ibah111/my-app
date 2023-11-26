@@ -1,69 +1,35 @@
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { TextMaskCustom } from "../utils/fieldMask";
-import React from "react";
-import ConfirmingDialog from "./ConfirmingDialog";
+import { Checkbox, FormControlLabel, FormGroup, Grid } from "@mui/material";
 import InsertedImage from "./Image";
 import { naborMini, nasadkaMini, steelCan, zazhimMini } from "../images";
 import Order from "./Order";
-class Addon {
-  id: number;
-  title: string;
-  price: number;
-  pic: any;
-  checked: boolean;
-}
+import { useAppSelector } from "../store/hooks/redux";
+import { Addon } from "../store/reducers/addonsSlice";
+
 export default function Header() {
   const addons: Addon[] = [
-    /**
-     * Можно реализовать получение массив с сервера
-     */
     {
-      id: 1,
       title: "Набор для копчения",
       price: 7990,
       pic: naborMini,
-      checked: false,
     },
     {
-      id: 2,
       title: "Жестяные банки",
       price: 7990,
       pic: steelCan,
-      checked: true,
     },
     {
-      id: 3,
       title: "Защитные зажимы",
       price: 7990,
       pic: zazhimMini,
-      checked: false,
     },
     {
-      id: 4,
       title: "Насадка для самогоноварения",
       price: 7990,
       pic: nasadkaMini,
-      checked: true,
     },
   ];
-  /**
-   *
-   * Условие на кнопку
-   * @returns
-   */
+
+  const {} = useAppSelector((state) => state.addonReducer);
 
   return (
     <>
@@ -80,18 +46,13 @@ export default function Header() {
           Откройте больше возможностей «Крестьянки»
         </Grid>
         <Grid className="under">Вместе с полезными дополнениями</Grid>
-        {/**
-         * Чек лист покупки
-         */}
         <Grid className="group">
           {addons.map((item) => {
             return (
               <>
                 <FormGroup>
                   <FormControlLabel
-                    control={
-                      <Checkbox value={item.checked} checked={item.checked} />
-                    }
+                    control={<Checkbox />}
                     label={
                       <>
                         <img src={item.pic} alt="pic" className="pic" />

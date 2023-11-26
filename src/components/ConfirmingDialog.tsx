@@ -5,7 +5,7 @@ export default function ConfirmingDialog(props: {
   onClose: VoidFunction;
 }) {
   return (
-    <Dialog open={props.open}>
+    <Dialog open={props.open} onClose={props.onClose}>
       <DialogTitle
         sx={{
           textAlign: "center",
@@ -20,7 +20,7 @@ export default function ConfirmingDialog(props: {
       >
         <Typography>
           {
-            "Менеджер уже получил ваше обращение\n он свяжется с вами в течение 10 минут"
+            "Менеджер уже получил ваше обращение, с вами свяжутся в течение 10 минут"
           }
         </Typography>
       </DialogContent>
