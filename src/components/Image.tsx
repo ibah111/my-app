@@ -1,4 +1,5 @@
-import logo from "../images/tencopy.png";
+import { samogon } from "../images";
+
 export default function InsertedImage() {
-  return <img src={logo} alt="dsa" />;
+  return <img src={samogon} alt="logo" />;
 }
