@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 
 export default function ConfirmingDialog(props: {
   open: boolean;
@@ -6,8 +6,24 @@ export default function ConfirmingDialog(props: {
 }) {
   return (
     <Dialog open={props.open}>
-      <DialogTitle>Абоба</DialogTitle>
-      <DialogContent>adada</DialogContent>
+      <DialogTitle
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        Благодарим за заказ
+      </DialogTitle>
+      <DialogContent
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <Typography>
+          {
+            "Менеджер уже получил ваше обращение\n он свяжется с вами в течение 10 минут"
+          }
+        </Typography>
+      </DialogContent>
     </Dialog>
   );
 }
