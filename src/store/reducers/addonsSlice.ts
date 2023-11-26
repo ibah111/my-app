@@ -25,6 +25,9 @@ export const addonSlice = createSlice({
     decreaseCost(state, action: PayloadAction<number>) {
       state.totalCost -= action.payload;
     },
+    resetCost(state) {
+      state.totalCost = initialState.totalCost;
+    },
   },
 });
 export const { increaseCost, decreaseCost } = addonSlice.actions;

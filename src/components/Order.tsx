@@ -12,24 +12,27 @@ import { Stack } from "@mui/material";
 import { TextMaskCustom } from "../utils/fieldMask";
 import ConfirmingDialog from "./ConfirmingDialog";
 import React from "react";
-import { useAppSelector } from "../store/hooks/redux";
+import { useAppDispatch, useAppSelector } from "../store/hooks/redux";
+import { addonSlice } from "../store/reducers/addonsSlice";
 
 export default function Order() {
   const [open, setOpen] = React.useState<boolean>(false);
   const [name, setName] = React.useState<string>("");
   const [phone, setPhone] = React.useState<string>("");
-  const handleClose = () => {
-    setOpen(false);
-    setName("");
-    setPhone("");
-  };
   const condition = (name: string, phone: string): boolean => {
     if (name && phone.length === 17) return false;
     return true;
   };
 
   const { totalCost } = useAppSelector((state) => state.addonReducer);
-
+  const { resetCost } = addonSlice.actions;
+  const dispatch = useAppDispatch();
+  const handleClose = () => {
+    setOpen(false);
+    setName("");
+    setPhone("");
+    dispatch(resetCost());
+  };
   return (
     <>
       <Grid className="order">
@@ -90,6 +93,7 @@ export default function Order() {
             onClick={() => {
               setOpen(true);
             }}
+            variant="contained"
           >
             <Typography>Заказать</Typography>
           </Button>
